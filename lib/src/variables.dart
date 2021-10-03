@@ -29,10 +29,8 @@ int maxCharLength = 250;
 int maxLines = 1;
 
 /// Main widget tree variables.
-double defaultXMax = 8.0;
-double defaultYMax = 9.0;
+double defaultXMax = 4.0;
+double defaultYMax = 4.0;
 List<List<double>> defaultCoordinateList = [
-  [2.0,2.0],
-  [3.0,3.0],
-  [4.0, 4.0]
+  [1.0,1.0],
 ];

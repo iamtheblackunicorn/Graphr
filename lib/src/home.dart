@@ -78,7 +78,7 @@ class HomeState extends State<Home> {
       body: new SingleChildScrollView(
         child: new Center(
           child: new Container(
-            width: 2.5*(MediaQuery.of(context).size.width/3),
+            width: MediaQuery.of(context).size.width,
             child:new Column(
               children: <Widget> [
                 new Padding(
@@ -138,7 +138,7 @@ class HomeState extends State<Home> {
                     stdRounding
                   ),
                   child: new Container(
-                    width: 2.5*(MediaQuery.of(context).size.width/3),
+                    width: MediaQuery.of(context).size.width,
                     child: new RaisedButton(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(

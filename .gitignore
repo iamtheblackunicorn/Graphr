@@ -59,3 +59,4 @@ xcuserdata/
 !Flutter-Release.xcconfig
 !Flutter-Debug.xcconfig
 build/*
+android/local.properties
