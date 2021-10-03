@@ -1,6 +1,14 @@
-import 'package:flutter/material.dart';
+/*
+GRAPHR by Alexander Abraham a.k.a. "The Black Unicorn"
+Licensed under the MIT license.
+*/
+
 import 'input.dart';
 import 'graph.dart';
+import 'variables.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class Home extends StatefulWidget{
   HomeState createState(){
@@ -8,20 +16,27 @@ class Home extends StatefulWidget{
   }
 }
 class HomeState extends State<Home> {
+
+  /// Empty containers
+  /// for the initial state
+  /// of the app's state variables.
   late double xMax;
   late double yMax;
   late List<List<double>> coordinateList;
   @override
+
+  /// Setting the initial "state"
+  /// of the app with some default values.
   void initState(){
     super.initState();
-    xMax = 8.0;
-    yMax = 8.0;
-    coordinateList = [
-      [2.0,2.0],
-      [3.0,3.0],
-      [4.0, 4.0]
-    ];
+    xMax = defaultXMax;
+    yMax = defaultYMax;
+    coordinateList = defaultCoordinateList;
   }
+
+  /// This is the method that
+  /// passes the output to the
+  /// [Graph] widget.
   @override
   void processData(
     String xMaxVal,
@@ -38,17 +53,26 @@ class HomeState extends State<Home> {
       List<double> coordinatePair = [xCoord,yCoord];
       endRes.add(coordinatePair);
     }
+
+    /// After the input data has been processed
+    /// we update the state variables accordingly.
     setState((){
       xMax = double.parse(xMaxVal);
       yMax = double.parse(yMaxVal);
       coordinateList = endRes;
     });
   }
+
+  /// This method returns the main widget tree.
   @override
   Widget build(BuildContext context){
     TextEditingController xMaxInputController = new TextEditingController();
     TextEditingController yMaxInputController = new TextEditingController();
     TextEditingController valueInputController = new TextEditingController();
+    String xMaxLabel = AppLocalizations.of(context)!.xMaxLabel;
+    String yMaxLabel = AppLocalizations.of(context)!.yMaxLabel;
+    String valueListLabel = AppLocalizations.of(context)!.valueListLabel;
+    String renderLabel = AppLocalizations.of(context)!.renderLabel;
     return Scaffold(
       backgroundColor: Color(0xFF000000),
       body: new SingleChildScrollView(
@@ -58,12 +82,12 @@ class HomeState extends State<Home> {
             child:new Column(
               children: <Widget> [
                 new Padding(
-                  padding: EdgeInsets.all(30),
+                  padding: EdgeInsets.all(inputPadding),
                   child: new Container(
                     child: new Input(
-                      xMaxHintText: 'X Max',
-                      yMaxHintText: 'Y Max',
-                      valueHintText: 'Value List',
+                      xMaxHintText: xMaxLabel,
+                      yMaxHintText: yMaxLabel,
+                      valueHintText: valueListLabel,
                       xMaxInputController:xMaxInputController,
                       yMaxInputController:yMaxInputController,
                       valueInputController:valueInputController
@@ -71,22 +95,25 @@ class HomeState extends State<Home> {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          Color(0xFF087DFB),
-                          Color(0xFFD6528A)
+                          babyBlue,
+                          babyPink
                         ]
                       ),
                       borderRadius: BorderRadius.all(
-                        Radius.circular(25)
+                        Radius.circular(stdRounding)
                       ),
                     ),
                   )
                 ),
                 new Padding(
-                  padding: EdgeInsets.all(30),
+                  padding: EdgeInsets.all(inputPadding),
                   child: new Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
                     child: new CustomPaint(
+
+                      /// Here we swap out all the variables that
+                      /// change ipon input from the user.
                       painter:new Graph(
                         xMax: xMax,
                         yMax: yMax,
@@ -96,41 +123,45 @@ class HomeState extends State<Home> {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          Color(0xFF087DFB),
-                          Color(0xFFD6528A)
+                          babyBlue,
+                          babyPink
                         ]
                       ),
                       borderRadius: BorderRadius.all(
-                        Radius.circular(25)
+                        Radius.circular(stdRounding)
                       ),
                     ),
                   )
                 ),
                 new Padding(
                   padding: EdgeInsets.all(
-                    25
+                    stdRounding
                   ),
                   child: new Container(
                     width: 2.5*(MediaQuery.of(context).size.width/3),
                     child: new RaisedButton(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(
-                          25
+                          stdRounding
                         )
                       ),
                       padding: EdgeInsets.only(
-                        top: 20,
-                        bottom: 20,
+                        top: stdFontSize,
+                        bottom: stdFontSize,
                       ),
-                      color: Color(0xFF087DFB),
+                      color: babyBlue,
                       child: new Text(
-                        'RENDER',
+                        renderLabel,
                         style: TextStyle(
-                          color: Color(0xFFFFFFFF),
-                          fontSize: 25,
+                          color: strokeColor,
+                          fontSize: stdFontSize,
+                          fontFamily: fontFam
                         )
                       ),
                       onPressed: () {
+                        /// Here we actually get
+                        /// the user's input and process
+                        /// the input.
                         processData(
                           xMaxInputController.text,
                           yMaxInputController.text,

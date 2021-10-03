@@ -1,5 +1,15 @@
+/*
+GRAPHR by Alexander Abraham a.k.a. "The Black Unicorn"
+Licensed under the MIT license.
+*/
+
+import 'variables.dart';
 import 'package:flutter/material.dart';
 
+/// Our home-rolled [CustomPainter]
+/// widget to draw points with
+/// lines and points as a graph.
+/// Fell free to re-use this.
 class Graph extends CustomPainter{
   late final List<List<double>> coordinateList;
   late double yMax;
@@ -10,6 +20,10 @@ class Graph extends CustomPainter{
     required this.xMax
   });
 
+  /// Getting the Offset
+  /// from a list of points.
+  /// We need this method to
+  /// actually connect points.
   @override
   Offset getOffset(
     List<double> numberPair,
@@ -27,45 +41,46 @@ class Graph extends CustomPainter{
   @override
   void paint(Canvas canvas, Size size){
 
-    // General variables for rendering
-    // a custom widget.
+    /// General variables for rendering
+    /// a custom widget.
     Paint pointPaint = new Paint();
-    pointPaint.color = Color(0xFFD6528A);
-    pointPaint.strokeWidth = 4.0;
-    double radius = 5.0;
+    pointPaint.color = graphColor;
+    pointPaint.strokeWidth = strokeWidth;
+    double radius = pointRadius;
 
-    // Setting up the origin.
+    /// Setting up the origin.
     double sizeY = size.height - (size.height/8);
     double sizeX = 0 + size.width/12;
     Offset origin = Offset(sizeX,sizeY);
     canvas.drawCircle(origin, radius, pointPaint);
 
-    // Setting up the origin on top.
+    /// Setting up the origin on top.
     double sizeYUpDown = 0 + (size.height/8);
     double sizeXUpDown = 0 + size.width/12;
     Offset originUp = Offset(sizeXUpDown,sizeYUpDown);
     canvas.drawCircle(originUp, radius, pointPaint);
 
-    // Setting up the origin in the
-    // lower right-hand corner.
+    /// Setting up the origin in the
+    /// lower right-hand corner.
     double sizeYDown = 0 + (7*(size.height/8));
     double sizeXDown = 0 + (11*(size.width/12));
     Offset originDown = Offset(sizeXDown,sizeYDown);
     canvas.drawCircle(originDown, radius, pointPaint);
 
-    // Drawing lines between the three.
+    /// Drawing lines between the three.
     canvas.drawLine(origin, originUp, pointPaint);
     canvas.drawLine(origin, originDown, pointPaint);
 
-    // Setting up the units inside the graphn field.
+    /// Setting up the units inside the graphn field.
     double yMaxRestriction = origin.dy - originUp.dy;
     double xMaxRestriction = originDown.dx - origin.dx;
     double oneUnitY = yMaxRestriction / yMax;
     double oneUnitX = yMaxRestriction / xMax;
 
-    // Plotting the points.
+    /// Plotting the points.
     for (int i = 0; i < coordinateList.length; i++){
-      // Connecting the point(s).
+      // Drawing and
+      // connecting the point(s).
       if (i == 0){
         Offset currentPoint = getOffset(
           coordinateList[i],
@@ -95,6 +110,8 @@ class Graph extends CustomPainter{
     }
   }
 
+  /// Telling the [CustomPainter] to re-draw
+  /// the canvas when the app's state changes.
   @override
   bool shouldRepaint(Graph oldDelegate){
     return true;

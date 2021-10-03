@@ -17,6 +17,21 @@ The purpose of this app was to let people type in a list of X values and Y value
   - ***[Download for Android](https://github.com/iamtheblackunicorn/Graphr/releases/download/v.1.0.0/Graphr-v1.0.0-X-Release.apk) (~15.2 MB)***
   - ***[Download for Mac OSX](https://github.com/iamtheblackunicorn/Graphr/releases/download/v.1.0.0/Graphr-v1.0.0-X-Release.app.zip) (~11.8 MB)***
 
+## Usage :pick:
+
+When you start ***Graphr***, the usage of the app is very simple.
+Fill the first field with the maximum X-value, the second field with the maximum Y-value,
+and the third field with a string of this format:
+
+```text
+[[1.0,2.0], [3.0,4.0], [6.0,7.0]]
+```
+
+Please note the space between the X-value and Y-value pairs.
+When you have filled these fields, press the button at the bottom of the screen and watch the magic happen.
+
+Enjoy! :)
+
 ## Building :hammer:
 
 Make sure that you have the following programmes installed:
