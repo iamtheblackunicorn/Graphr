@@ -53,81 +53,95 @@ class HomeState extends State<Home> {
       backgroundColor: Color(0xFF000000),
       body: new SingleChildScrollView(
         child: new Center(
-          child: new Column(
-            children: <Widget> [
-              new Padding(
-                padding: EdgeInsets.all(30),
-                child: new Container(
-                  child: new Input(
-                    xMaxHintText: 'X Max',
-                    yMaxHintText: 'Y Max',
-                    valueHintText: 'Value List',
-                    xMaxInputController:xMaxInputController,
-                    yMaxInputController:yMaxInputController,
-                    valueInputController:valueInputController
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF087DFB),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(25)
+          child: new Container(
+            width: 2.5*(MediaQuery.of(context).size.width/3),
+            child:new Column(
+              children: <Widget> [
+                new Padding(
+                  padding: EdgeInsets.all(30),
+                  child: new Container(
+                    child: new Input(
+                      xMaxHintText: 'X Max',
+                      yMaxHintText: 'Y Max',
+                      valueHintText: 'Value List',
+                      xMaxInputController:xMaxInputController,
+                      yMaxInputController:yMaxInputController,
+                      valueInputController:valueInputController
                     ),
-                  ),
-                )
-              ),
-              new Padding(
-                padding: EdgeInsets.all(30),
-                child: new Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  child: new CustomPaint(
-                    painter:new Graph(
-                      xMax: xMax,
-                      yMax: yMax,
-                      coordinateList: coordinateList
-                    )
-                  ),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF087DFB),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(25)
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Color(0xFF087DFB),
+                          Color(0xFFD6528A)
+                        ]
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(25)
+                      ),
                     ),
-                  ),
-                )
-              ),
-              new Padding(
-                padding: EdgeInsets.all(
-                  25
+                  )
                 ),
-                child:new RaisedButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                      25
+                new Padding(
+                  padding: EdgeInsets.all(30),
+                  child: new Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    child: new CustomPaint(
+                      painter:new Graph(
+                        xMax: xMax,
+                        yMax: yMax,
+                        coordinateList: coordinateList
+                      )
+                    ),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Color(0xFF087DFB),
+                          Color(0xFFD6528A)
+                        ]
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(25)
+                      ),
+                    ),
+                  )
+                ),
+                new Padding(
+                  padding: EdgeInsets.all(
+                    25
+                  ),
+                  child: new Container(
+                    width: 2.5*(MediaQuery.of(context).size.width/3),
+                    child: new RaisedButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                          25
+                        )
+                      ),
+                      padding: EdgeInsets.only(
+                        top: 20,
+                        bottom: 20,
+                      ),
+                      color: Color(0xFF087DFB),
+                      child: new Text(
+                        'RENDER',
+                        style: TextStyle(
+                          color: Color(0xFFFFFFFF),
+                          fontSize: 25,
+                        )
+                      ),
+                      onPressed: () {
+                        processData(
+                          xMaxInputController.text,
+                          yMaxInputController.text,
+                          valueInputController.text
+                        );
+                      }
                     )
-                  ),
-                  color: Color(0xFF087DFB),
-                  padding: EdgeInsets.only(
-                    top: 10,
-                    bottom: 10,
-                    left: 100,
-                    right: 100
-                  ),
-                  child: new Text(
-                    'RENDER',
-                    style: TextStyle(
-                      color: Color(0xFFD6528A),
-                      fontSize: 25,
-                    )
-                  ),
-                  onPressed: () {
-                    processData(
-                      xMaxInputController.text,
-                      yMaxInputController.text,
-                      valueInputController.text
-                    );
-                  }
+                  )
                 )
-              )
-            ]
+              ]
+            )
           )
         )
       )

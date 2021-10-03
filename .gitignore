@@ -58,3 +58,4 @@ Pods/
 xcuserdata/
 !Flutter-Release.xcconfig
 !Flutter-Debug.xcconfig
+build/*
