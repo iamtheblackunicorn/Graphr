@@ -14,7 +14,7 @@ The purpose of this app was to let people type in a list of X values and Y value
 ## Download :inbox_tray:
 
 - ***X (v.1.0.0)***:
-  - ***[Download for Mac OSX](https://github.com/iamtheblackunicorn/Graphr/releases/download/v.1.0.0/Graphr-v1.0.0-X-Release.app.zip) (~11.8 MB)***
+  - ***[Download for Mac OSX](https://github.com/iamtheblackunicorn/Graphr/releases/download/v.1.0.0/Graphr-v1.0.0-X-Release.app.zip) (~13.6 MB)***
 
 ## Usage :pick:
 
