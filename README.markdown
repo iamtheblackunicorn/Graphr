@@ -13,8 +13,7 @@ The purpose of this app was to let people type in a list of X values and Y value
 
 ## Download :inbox_tray:
 
-- ***X (STILL W.I.P) (v.1.0.0)***:
-  - ***[Download for Android](https://github.com/iamtheblackunicorn/Graphr/releases/download/v.1.0.0/Graphr-v1.0.0-X-Release.apk) (~15.2 MB)***
+- ***X (v.1.0.0)***:
   - ***[Download for Mac OSX](https://github.com/iamtheblackunicorn/Graphr/releases/download/v.1.0.0/Graphr-v1.0.0-X-Release.app.zip) (~11.8 MB)***
 
 ## Usage :pick:
